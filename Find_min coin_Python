@@ -1,0 +1,15 @@
+N, K = list(map(int, input().split(' '))) # User enter amount of type coins and How much is it
+coin_list = [0 for _ in range(N)] # Initilalize each coin list's elements to 0.
+min_coin = 0   # Min_coin wiil means that how many coins to need.
+for i in range(N):
+    coin_list[i] = int(input())  # User insert user's type of coin in coin_list. (The user must enter the data in ascending order.)
+
+for j in range(N-1, -1, -1): # The loop that to solve minimum amount of coins.
+    if K == 0:
+        break
+    elif coin_list[j] > K:
+        continue
+    else:
+        min_coin += (K//coin_list[j])
+        K -= ((K//coin_list[j]) * coin_list[j])
+print(min_coin)
