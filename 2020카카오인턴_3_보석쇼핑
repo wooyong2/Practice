@@ -1,0 +1,15 @@
+def solution(gems):
+    ans_list = []
+    len_list = []
+    gems_set = set(gems)
+
+    for i in range(len(gems) - len(gems_set) + 1):
+        for j in range(i + len(gems_set) - 1, len(gems)):
+            if len(set(gems[i:j + 1])) == len(gems_set):
+                ans_list.append([i + 1, j + 1])
+                len_list.append(j - i)
+            for n in range(len(len_list)):
+                if len_list[n] == min(len_list):
+                    answer = ans_list[n]
+                    break
+    return answer
